@@ -1,0 +1,214 @@
+{
+  "type": "custom-component",
+  "name": "dashboard-shell-header",
+  "description": "## Dashboard Shell Header\nCompact responsive header for the dashboard shell. Displays a configurable title, an optional subtitle, and an optional refresh action with accessible labeling.\n",
+  "children": [
+    {
+      "name": "header",
+      "classList": [
+        "rounded-xl",
+        "border",
+        "border-slate-200",
+        "bg-white",
+        "px-4",
+        "py-3",
+        "shadow-sm",
+        "sm:px-5",
+        "sm:py-4"
+      ],
+      "layout": {
+        "container": {
+          "type": "box",
+          "orientation": "row",
+          "crossAxisAlignment": "center",
+          "mainAxisAlignment": "space-between",
+          "gap": "1rem"
+        }
+      },
+      "children": [
+        {
+          "name": "div",
+          "classList": [
+            "min-w-0"
+          ],
+          "layout": {
+            "container": {
+              "type": "box",
+              "orientation": "column",
+              "crossAxisAlignment": "flex-start",
+              "gap": "0.25rem"
+            },
+            "cell": {
+              "type": "box-item",
+              "growFactor": 1,
+              "shrinkFactor": 1,
+              "mainSize": "100%"
+            }
+          },
+          "children": [
+            {
+              "name": "h1",
+              "classList": [
+                "truncate",
+                "text-lg",
+                "font-semibold",
+                "tracking-tight",
+                "text-slate-900",
+                "sm:text-xl"
+              ],
+              "layout": {
+                "cell": {
+                  "type": "box-item",
+                  "growFactor": 0,
+                  "shrinkFactor": 0,
+                  "mainSize": "auto"
+                }
+              },
+              "children": [
+                {
+                  "name": "text",
+                  "textContent": "$ctrl.title",
+                  "evaluate": true
+                }
+              ]
+            },
+            {
+              "name": "p",
+              "classList": [
+                "text-sm",
+                "text-slate-500"
+              ],
+              "displayExpression": "$ctrl.subtitle",
+              "layout": {
+                "cell": {
+                  "type": "box-item",
+                  "growFactor": 0,
+                  "shrinkFactor": 0,
+                  "mainSize": "auto"
+                }
+              },
+              "children": [
+                {
+                  "name": "text",
+                  "textContent": "$ctrl.subtitle",
+                  "evaluate": true
+                }
+              ]
+            }
+          ],
+          "comments": "Title region keeps long dashboard names readable without pushing the action outside the header."
+        },
+        {
+          "name": "div",
+          "classList": [
+            "shrink-0"
+          ],
+          "displayExpression": "$ctrl.onRefresh",
+          "layout": {
+            "cell": {
+              "type": "box-item",
+              "growFactor": 0,
+              "shrinkFactor": 0,
+              "mainSize": "auto"
+            }
+          },
+          "children": [
+            {
+              "name": "Button",
+              "nodeName": "bln-button",
+              "attributes": [
+                {
+                  "property": "core",
+                  "value": ""
+                }
+              ],
+              "classList": [],
+              "layout": {
+                "cell": {
+                  "type": "box-item",
+                  "growFactor": 0,
+                  "shrinkFactor": 0,
+                  "mainSize": "auto"
+                }
+              },
+              "children": [],
+              "comments": "Accessible refresh action: visible label, tooltip, and callback event are all provided by the core button.",
+              "type": "core-component",
+              "expressions": [
+                {
+                  "to": "label",
+                  "expression": "'Refresh dashboard'"
+                },
+                {
+                  "to": "type",
+                  "expression": "'secondary'"
+                },
+                {
+                  "to": "icon",
+                  "expression": "{\"type\":\"font-icon\",\"style\":\"solid\",\"name\":\"sync-alt\",\"position\":\"left\"}"
+                },
+                {
+                  "to": "tooltip",
+                  "expression": "'Refresh dashboard data'"
+                },
+                {
+                  "to": "onClick",
+                  "expression": "$ctrl.onRefresh({event: event})"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "comments": "Responsive dashboard header: the title area can shrink while the refresh action remains compact and accessible."
+    }
+  ],
+  "variables": [],
+  "bindings": [
+    {
+      "name": "title",
+      "type": "<",
+      "default": "'Dashboard'",
+      "description": "The primary dashboard title shown in the header.",
+      "visibleWhen": "",
+      "label": "",
+      "group": "",
+      "example": "",
+      "actions": [],
+      "propertyType": "text",
+      "autocomplete": [],
+      "includeAssets": false
+    },
+    {
+      "name": "subtitle",
+      "type": "<",
+      "default": "''",
+      "description": "Optional supporting text displayed beneath the dashboard title.",
+      "visibleWhen": "",
+      "label": "",
+      "group": "",
+      "example": "",
+      "actions": [],
+      "propertyType": "text",
+      "autocomplete": [],
+      "includeAssets": false
+    },
+    {
+      "name": "onRefresh",
+      "type": "<",
+      "default": "",
+      "description": "Optional callback invoked when the refresh action is activated.",
+      "visibleWhen": "",
+      "label": "",
+      "group": "",
+      "example": "",
+      "actions": [],
+      "propertyType": "function",
+      "parameters": [
+        "event"
+      ]
+    }
+  ],
+  "modules": [],
+  "styles": []
+}

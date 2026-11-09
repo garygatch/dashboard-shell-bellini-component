@@ -1,0 +1,167 @@
+{
+  "type": "custom-component",
+  "name": "dashboard-shell-stats",
+  "description": "## Dashboard Shell Stats\nResponsive summary cards for dashboard KPI data. Each stat supports a label, value, optional trend text, and positive, negative, or neutral trend styling.\nDisplays a helpful empty state when no statistics are supplied.\n",
+  "children": [
+    {
+      "name": "div",
+      "classList": [
+        "grid",
+        "grid-cols-1",
+        "gap-3",
+        "sm:grid-cols-2",
+        "xl:grid-cols-3"
+      ],
+      "children": [
+        {
+          "name": "div",
+          "classList": [
+            "col-span-full",
+            "rounded-lg",
+            "border",
+            "border-dashed",
+            "border-slate-300",
+            "bg-slate-50",
+            "px-6",
+            "py-8",
+            "text-center"
+          ],
+          "displayExpression": "!$ctrl.stats || $ctrl.stats.length === 0",
+          "children": [
+            {
+              "name": "p",
+              "classList": [
+                "text-sm",
+                "font-medium",
+                "text-slate-700"
+              ],
+              "children": [
+                {
+                  "name": "text",
+                  "textContent": "No summary statistics yet",
+                  "evaluate": false
+                }
+              ]
+            },
+            {
+              "name": "p",
+              "classList": [
+                "mt-1",
+                "text-sm",
+                "text-slate-500"
+              ],
+              "children": [
+                {
+                  "name": "text",
+                  "textContent": "Add metrics to see a quick view of dashboard performance.",
+                  "evaluate": false
+                }
+              ]
+            }
+          ],
+          "comments": "Empty state shown when the parent does not provide any summary statistics."
+        },
+        {
+          "name": "article",
+          "classList": [
+            "rounded-lg",
+            "border",
+            "border-slate-200",
+            "bg-white",
+            "p-4",
+            "shadow-sm"
+          ],
+          "iterate": {
+            "array": "$ctrl.stats",
+            "variable": "stat"
+          },
+          "children": [
+            {
+              "name": "p",
+              "classList": [
+                "text-sm",
+                "font-medium",
+                "text-slate-500"
+              ],
+              "children": [
+                {
+                  "name": "text",
+                  "textContent": "stat.label",
+                  "evaluate": true
+                }
+              ]
+            },
+            {
+              "name": "p",
+              "classList": [
+                "mt-2",
+                "text-2xl",
+                "font-semibold",
+                "tracking-tight",
+                "text-slate-900"
+              ],
+              "children": [
+                {
+                  "name": "text",
+                  "textContent": "stat.value",
+                  "evaluate": true
+                }
+              ]
+            },
+            {
+              "name": "p",
+              "classList": [
+                "mt-2",
+                "text-sm",
+                "font-medium"
+              ],
+              "conditionalClasses": [
+                {
+                  "className": "text-emerald-600",
+                  "condition": "stat.trendType === 'positive'"
+                },
+                {
+                  "className": "text-rose-600",
+                  "condition": "stat.trendType === 'negative'"
+                },
+                {
+                  "className": "text-slate-500",
+                  "condition": "!stat.trendType || stat.trendType === 'neutral'"
+                }
+              ],
+              "displayExpression": "stat.trend",
+              "children": [
+                {
+                  "name": "text",
+                  "textContent": "stat.trend",
+                  "evaluate": true
+                }
+              ]
+            }
+          ],
+          "comments": "Each card reads label and value from the stat item and renders trend text only when supplied."
+        }
+      ],
+      "comments": "Responsive KPI card grid: one column on narrow screens, two on small screens, and three on wide screens."
+    }
+  ],
+  "variables": [],
+  "bindings": [
+    {
+      "name": "stats",
+      "type": "<",
+      "default": "[]",
+      "description": "Array of statistic objects. Each item should provide label and value, with optional trend and trendType values of positive, negative, or neutral.",
+      "visibleWhen": "",
+      "label": "",
+      "group": "",
+      "example": "",
+      "actions": [],
+      "propertyType": "array",
+      "enumOptions": [],
+      "elementsProperties": []
+    }
+  ],
+  "modules": [],
+  "styles": []
+}

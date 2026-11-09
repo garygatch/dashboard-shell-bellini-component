@@ -1,0 +1,304 @@
+{
+  "type": "component",
+  "name": "dashboard-shell",
+  "description": "## Dashboard Shell\nA reusable, neutral dashboard container with a title header, optional refresh action, compact summary cards, and a recent activity panel. The summary and activity areas intentionally include clear empty structures so nested child components can be wired in by consuming applications.\n",
+  "children": [
+    {
+      "name": "div",
+      "classList": [
+        "min-h-screen",
+        "bg-slate-50",
+        "p-4",
+        "sm:p-6",
+        "lg:p-8"
+      ],
+      "layout": {
+        "container": {
+          "type": "box",
+          "orientation": "column",
+          "crossAxisAlignment": "stretch",
+          "gap": "1.25rem"
+        }
+      },
+      "children": [
+        {
+          "name": "dashboard-shell-header",
+          "nodeName": "dashboard-shell-header",
+          "classList": [],
+          "layout": {
+            "cell": {
+              "type": "box-item",
+              "growFactor": 0,
+              "shrinkFactor": 0,
+              "mainSize": "auto"
+            }
+          },
+          "children": [],
+          "comments": "Nested dashboard header preserves the shell title and refresh callback while delegating responsive header presentation.",
+          "type": "custom-component",
+          "ownerId": "6af13282a6e72ea093e86099",
+          "ownerType": "component",
+          "expressions": [
+            {
+              "to": "title",
+              "expression": "$ctrl.title"
+            },
+            {
+              "to": "onRefresh",
+              "expression": "$ctrl.onRefresh(event)"
+            }
+          ]
+        },
+        {
+          "name": "section",
+          "classList": [
+            "rounded-xl",
+            "border",
+            "border-slate-200",
+            "bg-white",
+            "p-4",
+            "shadow-sm",
+            "sm:p-6"
+          ],
+          "layout": {
+            "container": {
+              "type": "box",
+              "orientation": "column",
+              "crossAxisAlignment": "stretch",
+              "gap": "1rem"
+            },
+            "cell": {
+              "type": "box-item",
+              "growFactor": 0,
+              "shrinkFactor": 0,
+              "mainSize": "auto"
+            }
+          },
+          "children": [
+            {
+              "name": "div",
+              "classList": [],
+              "layout": {
+                "container": {
+                  "type": "box",
+                  "orientation": "row",
+                  "crossAxisAlignment": "center",
+                  "mainAxisAlignment": "space-between"
+                },
+                "cell": {
+                  "type": "box-item",
+                  "growFactor": 0,
+                  "shrinkFactor": 0,
+                  "mainSize": "auto"
+                }
+              },
+              "children": [
+                {
+                  "name": "div",
+                  "classList": [],
+                  "layout": {
+                    "cell": {
+                      "type": "box-item",
+                      "growFactor": 1,
+                      "shrinkFactor": 1,
+                      "mainSize": "100%"
+                    }
+                  },
+                  "children": [
+                    {
+                      "name": "h2",
+                      "classList": [
+                        "text-base",
+                        "font-semibold",
+                        "text-slate-900"
+                      ],
+                      "children": [
+                        {
+                          "name": "text",
+                          "textContent": "Summary",
+                          "evaluate": false
+                        }
+                      ]
+                    },
+                    {
+                      "name": "p",
+                      "classList": [
+                        "mt-1",
+                        "text-sm",
+                        "text-slate-500"
+                      ],
+                      "children": [
+                        {
+                          "name": "text",
+                          "textContent": "A quick view of the metrics that matter most.",
+                          "evaluate": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "dashboard-shell-stats",
+              "nodeName": "dashboard-shell-stats",
+              "classList": [],
+              "layout": {
+                "cell": {
+                  "type": "box-item",
+                  "growFactor": 0,
+                  "shrinkFactor": 0,
+                  "mainSize": "auto"
+                }
+              },
+              "children": [],
+              "comments": "Nested stats component renders the responsive KPI card grid from the public stats input.",
+              "type": "custom-component",
+              "ownerId": "6af13282a6e72ea093e86099",
+              "ownerType": "component",
+              "expressions": [
+                {
+                  "to": "stats",
+                  "expression": "$ctrl.stats"
+                }
+              ]
+            }
+          ],
+          "comments": "Summary region: replace the placeholder cards with application-specific KPI or summary child components."
+        },
+        {
+          "name": "section",
+          "classList": [
+            "rounded-xl",
+            "border",
+            "border-slate-200",
+            "bg-white",
+            "p-4",
+            "shadow-sm",
+            "sm:p-6"
+          ],
+          "layout": {
+            "container": {
+              "type": "box",
+              "orientation": "column",
+              "crossAxisAlignment": "stretch",
+              "gap": "1rem"
+            },
+            "cell": {
+              "type": "box-item",
+              "growFactor": 1,
+              "shrinkFactor": 1,
+              "mainSize": "auto"
+            }
+          },
+          "children": [
+            {
+              "name": "div",
+              "classList": [],
+              "layout": {
+                "cell": {
+                  "type": "box-item",
+                  "growFactor": 0,
+                  "shrinkFactor": 0,
+                  "mainSize": "auto"
+                }
+              },
+              "children": [
+                {
+                  "name": "h2",
+                  "classList": [
+                    "text-base",
+                    "font-semibold",
+                    "text-slate-900"
+                  ],
+                  "children": [
+                    {
+                      "name": "text",
+                      "textContent": "Recent activity",
+                      "evaluate": false
+                    }
+                  ]
+                },
+                {
+                  "name": "p",
+                  "classList": [
+                    "mt-1",
+                    "text-sm",
+                    "text-slate-500"
+                  ],
+                  "children": [
+                    {
+                      "name": "text",
+                      "textContent": "Keep track of the latest updates across your workspace.",
+                      "evaluate": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "dashboard-shell-activity",
+              "nodeName": "dashboard-shell-activity",
+              "classList": [],
+              "layout": {
+                "cell": {
+                  "type": "box-item",
+                  "growFactor": 1,
+                  "shrinkFactor": 1,
+                  "mainSize": "auto"
+                }
+              },
+              "children": [],
+              "comments": "Nested activity component renders the responsive recent-activity list from the public activities input.",
+              "type": "custom-component",
+              "ownerId": "6af13282a6e72ea093e86099",
+              "ownerType": "component",
+              "expressions": [
+                {
+                  "to": "activities",
+                  "expression": "$ctrl.activities"
+                }
+              ]
+            }
+          ],
+          "comments": "Recent activity region: replace the empty activity body with a nested timeline, table, or activity-list component."
+        }
+      ],
+      "comments": "Dashboard shell layout: header, summary cards, and recent activity remain separate regions for easy composition."
+    }
+  ],
+  "variables": [],
+  "bindings": [
+    {
+      "name": "title",
+      "type": "<",
+      "default": "'Dashboard'",
+      "description": "The page title displayed in the dashboard header.",
+      "visibleWhen": "",
+      "label": "",
+      "group": "",
+      "example": "",
+      "actions": [],
+      "propertyType": "text",
+      "autocomplete": [],
+      "includeAssets": false
+    },
+    {
+      "name": "onRefresh",
+      "type": "<",
+      "default": "",
+      "description": "Optional callback invoked when the header refresh button is clicked.",
+      "visibleWhen": "",
+      "label": "",
+      "group": "",
+      "example": "",
+      "actions": [],
+      "propertyType": "function",
+      "parameters": [
+        "event"
+      ]
+    }
+  ],
+  "modules": [],
+  "styles": []
+}
